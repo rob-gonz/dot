@@ -4,6 +4,8 @@ I frequently use many linux/debian/ubuntu boxes each day while developing and te
 (Currently a work in progress)
 
 
+***
+
 ##Applying Changes
 In the root of the repo you will see two files, `apply_config.sh` and `Makefile`, capable of applying/deploying configuration. You can use either file/method. It is purely preference and I provide boh options.
 
@@ -45,23 +47,13 @@ $ make deploy CONFIG=<config>
 $ make deploy CONFIG=emacs
 ```
 
-##Repository Structure
-```
--apply_config.sh
--Makefile
--<program>
-
-   -.<program's configuration file>
-   -apply.sh
-```
-The file `<program>/apply.sh` is the script to automatically apply the configuration.
-
-*Any atypical assumptions made about a system will be stated in the details of each configuration.*
+***
+##Configurations
 
 ###tmux/
 `//TODO add screenshots`
 
-###Managing Panes
+####Managing Panes
 
 * Create panes
 ```
@@ -78,12 +70,29 @@ C-b -          split vertically (top/bottom)
        Alt-up
        alt-down
 ```
-##emacs/
+###emacs/
 `//TODO: Add the configuration description and screenshots`
 
 
-##bashrc/
-`//TODO: Add onfiguration files, description, and screenshots`
+###bashrc/
+`/3/TODO: Add onfiguration files, description, and screenshots`
+
+***
+
+##Repository Structure
+```
+-apply_config.sh
+-Makefile
+-<program>
+
+   -.<program's configuration file>
+   -apply.sh
+```
+The file `<program>/apply.sh` is the script to automatically apply the configuration.
+
+*Any atypical assumptions made about a system will be stated in the details of each configuration.*
+
+***
 
 # Special Thanks
 + [huynguye - linux-configs](https://github.com/huynguye/linux-configs)
