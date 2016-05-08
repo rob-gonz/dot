@@ -1,7 +1,7 @@
 #!/bin/sh
 
 bashrc_file=~/.bashrc
-aliases=.mybash_aliases
+aliases=.mybash
 echo "- - - - - - - - - - - - - - - - - - - - - -"
 echo "Applying tmux configuration to $USER"
 echo "cp -ip $aliases ~/$aliases"
@@ -30,3 +30,7 @@ fi
 
 
 echo "Completed Applying $aliases file to $USER"
+
+source $bashrc_file
+echo "Source bash file: done."
+

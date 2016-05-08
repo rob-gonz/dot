@@ -1,0 +1,95 @@
+# .bash-aliases
+
+######- VARIABLES -#####  <-- Edit this for your own custom values
+$repositories_root = ~/repositories
+
+
+#####- Color for presentation -#####
+red='\033[0;31m'
+green='\033[0;32m'
+blue='\033[0;34m'
+purple='\033[0;35m'
+orange='\033[0;33m'
+orange='\033[0;33m'
+NC='\033[0m' # No Color
+DEFAULT='\033[39m' # Default
+
+######- sys call overrides -#####
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias h='history'
+alias his='history | grep'
+
+
+######- Directory Shortcuts -#####
+function repo(){
+    cd $repositories_root
+    dir=$(pwd)
+    echo -e "  ${red}directory: ${green}$dir${DEFAULT} "
+}
+
+
+
+
+######- Fun things -#####
+
+# get current week number in the year
+function week(){
+    echo -en "${purple}Week number: "
+    date +%V
+    echo -e "${DEFAULT}"
+}
+
+
+
+#####- bashrc Improvements -#####
+
+# History increase
+HISTSIZE=10000
+HISTFILESIZE=10000
+
+# change bash colors (di = dir; ex = executable; ln = symlinks)
+LS_COLORS=$LS_COLORS:'di=0;35;1:ex=92:ln=96;1' ; export LS_COLORS
+
+# Improve readability of the terminal
+# Fill with minuses
+# (this is recalculated every time the prompt is shown in function prompt_command):
+fill="—- "
+reset_style='\[\033[00m\]'
+status_style=$reset_style'\[\033[1;33m\]' # line break color
+prompt_style=$reset_style
+command_style=$reset_style'\[\033[1;33m\]' # command prompt color
+# Prompt variable:
+
+# unmodified info line
+# PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}\u@\h:\w\$'"$command_style "
+
+# modified info line
+PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}\[\e[1;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]$(__git_ps1 "(%s)")\$\[\e[m\] \[\e[1;37m\]'"$command_style "
+
+# Reset color for command output
+# (this one is invoked every time before a command is executed):
+trap 'echo -ne "\e[0m"' DEBUG
+
+function prompt_command {
+
+# create a $fill of all screen width minus the time string and a space:
+  let fillsize=${COLUMNS}-9
+	fill=""
+	while [ "$fillsize" -gt "0" ]
+	      do
+	      fill="-${fill}" # fill with underscores to work on
+	      let fillsize=${fillsize}-1
+	      done
+# If this is an xterm set the title to user@host:dir
+  case "$TERM" in
+       xterm*|rxvt*)
+              bname=`basename "${PWD/$HOME/~}"`
+      	      echo -ne "\033]0;${bname}: ${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"
+	      ;;
+	      *)
+	      ;;																									esac
+}
+PROMPT_COMMAND=prompt_command
