@@ -23,3 +23,7 @@ list:
 deploy:
 	@echo "Deploying Config for ${CONFIG}"
 	@for D in ${CONFIG}; do cd $${D} && echo "Deploying $${D}..." && ./apply.sh && cd ../; done 
+
+clean:
+	@echo "Removing files *~"
+	@find . -name "*~" -type f -delete

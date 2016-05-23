@@ -50,32 +50,38 @@ $ make deploy CONFIG=emacs
 ***
 ##Configurations
 
-###tmux/
+###tmux
 `//TODO add screenshots`
 
-####Managing Panes
+#####Managing Panes
 
 * Create panes
 ```
 
-C-b -          split vertically (top/bottom)
+    C-b -          split vertically (top/bottom)
     C-b |          split horizontally (left/right)
 ```
 
 *Switch panes (arrow keys)
 ```
 
-       Alt-left       go to the next pane on the left
-       Alt-right      (or one of these other directions)
+    Alt-left       go to the next pane on the left
+    Alt-right      (or one of these other directions)
        Alt-up
        alt-down
 ```
-###emacs/
+###emacs
 `//TODO: Add the configuration description and screenshots`
 
 
-###bashrc/
+###bashrc
 `/3/TODO: Add onfiguration files, description, and screenshots`
+
+####Visual Changes
+
+####Added Commands
+
+####Aliases
 
 ***
 
