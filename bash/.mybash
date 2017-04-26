@@ -21,7 +21,9 @@ alias mv='mv -i'
 alias mkdir='mkdir -p'
 alias h='history'
 alias his='history | grep'
-
+alias 't'='tmux new-session -A -s $(basename $PWD | tr -d .)'
+alias 'ta'='tmux attach'
+alias 'tl'='tmux ls'
 
 ######- Directory Shortcuts -#####
 function repo(){
